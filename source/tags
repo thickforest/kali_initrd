@@ -1,0 +1,97 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Cmdline_old	lib/live/boot/9990-cmdline-old	/^Cmdline_old ()$/;"	f
+DRACUT_FIXME	lib/live/boot/0010-dracut	/^DRACUT_FIXME ()$/;"	f
+Debug	lib/live/boot/0110-debug	/^Debug ()$/;"	f
+Fstab	lib/live/boot/9990-fstab.sh	/^Fstab ()$/;"	f
+Main	lib/live/boot/9990-main.sh	/^Main ()$/;"	f
+Netbase	lib/live/boot/9990-netbase.sh	/^Netbase ()$/;"	f
+Read_only	lib/live/boot/0120-read-only	/^Read_only ()$/;"	f
+Select_eth_device	lib/live/boot/9990-select-eth-device.sh	/^Select_eth_device ()$/;"	f
+Swap	lib/live/boot/3020-swapon	/^Swap ()$/;"	f
+Verify_checksums	lib/live/boot/3010-verify-checksums	/^Verify_checksums ()$/;"	f
+activate_custom_mounts	lib/live/boot/9990-misc-helpers.sh	/^activate_custom_mounts ()$/;"	f
+activate_vg	scripts/local-top/cryptroot	/^activate_vg()$/;"	f
+activate_vg	scripts/local-top/lvm2	/^activate_vg()$/;"	f
+base_path	lib/live/boot/9990-misc-helpers.sh	/^base_path ()$/;"	f
+check_dev	lib/live/boot/9990-misc-helpers.sh	/^check_dev ()$/;"	f
+chmod_ref	lib/live/boot/9990-misc-helpers.sh	/^chmod_ref ()$/;"	f
+chown_ref	lib/live/boot/9990-misc-helpers.sh	/^chown_ref ()$/;"	f
+close_persistence_media	lib/live/boot/9990-misc-helpers.sh	/^close_persistence_media ()$/;"	f
+copy_live_to	lib/live/boot/9990-toram-todisk.sh	/^copy_live_to ()$/;"	f
+do_cifsmount	lib/live/boot/9990-mount-cifs.sh	/^do_cifsmount ()$/;"	f
+do_httpmount	lib/live/boot/9990-mount-http.sh	/^do_httpmount ()$/;"	f
+do_iscsi	lib/live/boot/9990-mount-iscsi.sh	/^do_iscsi()$/;"	f
+do_netmount	lib/live/boot/9990-netboot.sh	/^do_netmount()$/;"	f
+do_netsetup	lib/live/boot/9990-networking.sh	/^do_netsetup ()$/;"	f
+do_nfsmount	lib/live/boot/9990-mount-nfs.sh	/^do_nfsmount ()$/;"	f
+do_union	lib/live/boot/9990-misc-helpers.sh	/^do_union ()$/;"	f
+find_livefs	lib/live/boot/9990-misc-helpers.sh	/^find_livefs ()$/;"	f
+find_persistence_media	lib/live/boot/9990-misc-helpers.sh	/^find_persistence_media ()$/;"	f
+fix_backwards_compatibility	lib/live/boot/9990-misc-helpers.sh	/^fix_backwards_compatibility ()$/;"	f
+fs_size	lib/live/boot/9990-misc-helpers.sh	/^fs_size ()$/;"	f
+get_backing_device	lib/live/boot/9990-misc-helpers.sh	/^get_backing_device ()$/;"	f
+get_custom_mounts	lib/live/boot/9990-misc-helpers.sh	/^get_custom_mounts ()$/;"	f
+get_fstype	lib/live/boot/9990-misc-helpers.sh	/^get_fstype ()$/;"	f
+get_gpt_name	lib/live/boot/9990-misc-helpers.sh	/^get_gpt_name ()$/;"	f
+get_luks_backing_device	lib/live/boot/9990-misc-helpers.sh	/^get_luks_backing_device ()$/;"	f
+get_mac	lib/live/boot/9990-misc-helpers.sh	/^get_mac ()$/;"	f
+is_active_luks_mapping	lib/live/boot/9990-misc-helpers.sh	/^is_active_luks_mapping ()$/;"	f
+is_gpt_device	lib/live/boot/9990-misc-helpers.sh	/^is_gpt_device ()$/;"	f
+is_in_comma_sep_list	lib/live/boot/9990-misc-helpers.sh	/^is_in_comma_sep_list ()$/;"	f
+is_in_list_separator_helper	lib/live/boot/9990-misc-helpers.sh	/^is_in_list_separator_helper ()$/;"	f
+is_in_space_sep_list	lib/live/boot/9990-misc-helpers.sh	/^is_in_space_sep_list ()$/;"	f
+is_live_path	lib/live/boot/9990-misc-helpers.sh	/^is_live_path ()$/;"	f
+is_luks_partition	lib/live/boot/9990-misc-helpers.sh	/^is_luks_partition ()$/;"	f
+is_mountpoint	lib/live/boot/9990-misc-helpers.sh	/^is_mountpoint ()$/;"	f
+is_nice_device	lib/live/boot/9990-misc-helpers.sh	/^is_nice_device ()$/;"	f
+is_supported_fs	lib/live/boot/9990-misc-helpers.sh	/^is_supported_fs ()$/;"	f
+lastline	lib/live/boot/9990-misc-helpers.sh	/^lastline ()$/;"	f
+link_files	lib/live/boot/9990-misc-helpers.sh	/^link_files ()$/;"	f
+load_keymap	lib/live/boot/9990-misc-helpers.sh	/^load_keymap ()$/;"	f
+log_wait_msg	lib/live/boot/9990-initramfs-tools.sh	/^log_wait_msg ()$/;"	f
+match_files_in_dir	lib/live/boot/9990-misc-helpers.sh	/^match_files_in_dir ()$/;"	f
+matches_uuid	lib/live/boot/9990-misc-helpers.sh	/^matches_uuid ()$/;"	f
+maybe_break	lib/live/boot/9990-initramfs-tools.sh	/^maybe_break()$/;"	f
+message	scripts/local-top/cryptroot	/^message()$/;"	f
+mount_images_in_directory	lib/live/boot/9990-misc-helpers.sh	/^mount_images_in_directory ()$/;"	f
+mount_persistence_media	lib/live/boot/9990-misc-helpers.sh	/^mount_persistence_media ()$/;"	f
+mountroot	lib/live/boot/0020-initramfs-tools	/^mountroot ()$/;"	f
+non_removable_dev	lib/live/boot/9990-misc-helpers.sh	/^non_removable_dev ()$/;"	f
+open_luks_device	lib/live/boot/9990-misc-helpers.sh	/^open_luks_device ()$/;"	f
+panic	lib/live/boot/9990-initramfs-tools.sh	/^panic() {$/;"	f
+parse_options	scripts/local-top/cryptroot	/^parse_options()$/;"	f
+prereqs	scripts/init-bottom/udev	/^prereqs() { echo "$PREREQS"; }$/;"	f
+prereqs	scripts/init-premount/amd64_microcode	/^prereqs()$/;"	f
+prereqs	scripts/init-premount/intel_microcode	/^prereqs()$/;"	f
+prereqs	scripts/init-top/all_generic_ide	/^prereqs()$/;"	f
+prereqs	scripts/init-top/blacklist	/^prereqs()$/;"	f
+prereqs	scripts/init-top/keymap	/^prereqs()$/;"	f
+prereqs	scripts/init-top/udev	/^prereqs() { echo "$PREREQS"; }$/;"	f
+prereqs	scripts/local-bottom/cryptopensc	/^prereqs()$/;"	f
+prereqs	scripts/local-premount/resume	/^prereqs()$/;"	f
+prereqs	scripts/local-top/cryptopensc	/^prereqs()$/;"	f
+prereqs	scripts/local-top/cryptroot	/^prereqs()$/;"	f
+prereqs	scripts/local-top/lvm2	/^prereqs()$/;"	f
+probe_for_file_name	lib/live/boot/9990-misc-helpers.sh	/^probe_for_file_name ()$/;"	f
+probe_for_fs_label	lib/live/boot/9990-misc-helpers.sh	/^probe_for_fs_label ()$/;"	f
+probe_for_gpt_name	lib/live/boot/9990-misc-helpers.sh	/^probe_for_gpt_name ()$/;"	f
+really_export	lib/live/boot/9990-misc-helpers.sh	/^really_export ()$/;"	f
+removable_dev	lib/live/boot/9990-misc-helpers.sh	/^removable_dev ()$/;"	f
+removable_usb_dev	lib/live/boot/9990-misc-helpers.sh	/^removable_usb_dev ()$/;"	f
+setup_loop	lib/live/boot/9990-misc-helpers.sh	/^setup_loop ()$/;"	f
+setup_mapping	scripts/local-top/cryptroot	/^setup_mapping()$/;"	f
+setup_unionfs	lib/live/boot/9990-overlay.sh	/^setup_unionfs ()$/;"	f
+storage_devices	lib/live/boot/9990-misc-helpers.sh	/^storage_devices()$/;"	f
+subdevices	lib/live/boot/9990-misc-helpers.sh	/^subdevices ()$/;"	f
+sys2dev	lib/live/boot/9990-misc-helpers.sh	/^sys2dev ()$/;"	f
+trim_path	lib/live/boot/9990-misc-helpers.sh	/^trim_path ()$/;"	f
+try_mount	lib/live/boot/9990-misc-helpers.sh	/^try_mount ()$/;"	f
+udev_settle	scripts/local-top/cryptroot	/^udev_settle()$/;"	f
+validate_init	init	/^validate_init() {$/;"	f
+what_is_mounted_on	lib/live/boot/9990-misc-helpers.sh	/^what_is_mounted_on ()$/;"	f
+where_is_mounted	lib/live/boot/9990-misc-helpers.sh	/^where_is_mounted ()$/;"	f
