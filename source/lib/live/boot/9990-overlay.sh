@@ -226,6 +226,8 @@ setup_unionfs ()
 			for media in $(find_persistence_media "${overlays}" "${whitelistdev}")
 			do
 				media="$(echo ${media} | tr ":" " ")"
+				echo "find_persistence_media: $media"
+				sleep 3
 
 				case ${media} in
 					${old_root_overlay_label}=*)
@@ -408,16 +410,32 @@ setup_unionfs ()
 		rm -rf ${custom_mounts} 2> /dev/null
 
 		# Gather information about custom mounts from devies detected as overlays
-		echo get_custom_mounts ${custom_mounts} ${overlay_devices}
 		sleep 3
+		mylv=VG00-kali
+		#mylv=vgkali-lvkali
+		lvchange -ay /dev/mapper/$mylv
+		overlay_devices=/dev/mapper/$mylv
+		echo get_custom_mounts ${custom_mounts} ${overlay_devices}
 		get_custom_mounts ${custom_mounts} ${overlay_devices}
+		echo 'after get_custom_mounts'
+		/bin/sh
+
+		# [function] get_custom_mounts can not create file ${custom_mounts}, Why??????????
+		echo "/dev/mapper/$mylv /live/persistence/$mylv /root union" > ${custom_mounts}
 
 		[ -n "${DEBUG}" ] && cp ${custom_mounts} "/lib/live/mount/persistence"
 
 		# Now we do the actual mounting (and symlinking)
 		local used_overlays
 		used_overlays=""
+		echo "The content of ${custom_mounts}:"
+		cat ${custom_mounts}
+
 		used_overlays=$(activate_custom_mounts ${custom_mounts})
+		echo "used_overlays = ${used_overlays}"
+		echo 'after activate_custom_mounts'
+		/bin/sh
+
 		rm ${custom_mounts}
 
 		# Close unused overlays (e.g. due to missing $persistence_list)

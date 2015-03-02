@@ -743,9 +743,11 @@ mount_persistence_media ()
 	probe=${2}
 
 	backing="/live/persistence/$(basename ${device})"
+	#echo "backing=${backing}"
 
 	mkdir -p "${backing}"
 	old_backing="$(where_is_mounted ${device})"
+	#echo "old_backing=${old_backing}"
 	if [ -z "${old_backing}" ]
 	then
 		fstype="$(get_fstype ${device})"
@@ -754,6 +756,7 @@ mount_persistence_media ()
 		then
 			mount_opts="ro,noatime"
 		fi
+		#echo mount -t "${fstype}" -o "${mount_opts}" "${device}" "${backing}"
 		if mount -t "${fstype}" -o "${mount_opts}" "${device}" "${backing}" >/dev/null
 		then
 			echo ${backing}
@@ -765,6 +768,7 @@ mount_persistence_media ()
 		fi
 	elif [ "${backing}" != "${old_backing}" ]
 	then
+		#echo mount --move ${old_backing} ${backing} >/dev/null
 		if mount --move ${old_backing} ${backing} >/dev/null
 		then
 			echo ${backing}
@@ -1156,6 +1160,8 @@ link_files ()
 	dest_dir="$(trim_path ${2})/"
 	src_mask="${3}"
 
+	echo "(in link_files) src_dir=${src_dir} dest_dir=${dest_dir} src_mask=${src_mask}"
+
 	# This check can only trigger on the inital, non-recursive call since
 	# we create the destination before recursive calls
 	if [ ! -d "${dest_dir}" ]
@@ -1203,7 +1209,7 @@ do_union ()
 	unionrw="${1}"		# branch where the union changes are stored
 	shift
 	unionro="${*}"		# space separated list of read-only branches (optional)
-	echo "(in do_union) unionmountpoint=${unionmountpoint} unionrw=${unionrw} unionro=${unionro}"
+	#echo "(in do_union) unionmountpoint=${unionmountpoint} unionrw=${unionrw} unionro=${unionro}"
 
 	case "${UNIONTYPE}" in
 		aufs)
@@ -1223,7 +1229,7 @@ do_union ()
 			;;
 	esac
 
-	echo "(in do_union)UNIONTYPE=${UNIONTYPE}"
+	#echo "(in do_union)UNIONTYPE=${UNIONTYPE}"
 	case "${UNIONTYPE}" in
 		unionfs-fuse)
 			unionmountopts="-o cow -o noinitgroups -o default_permissions -o allow_other -o use_ino -o suid"
@@ -1264,8 +1270,6 @@ do_union ()
 					unionmountopts="${unionmountopts}:${rofs}=${ro_opt}"
 				done
 			fi
-			echo mount -t ${UNIONTYPE} ${unionmountopts} ${UNIONTYPE} "${unionmountpoint}"
-			sleep 10
 			mount -t ${UNIONTYPE} ${unionmountopts} ${UNIONTYPE} "${unionmountpoint}"
 			;;
 	esac
@@ -1277,9 +1281,10 @@ get_custom_mounts ()
 	# Side-effect: prints info to file $custom_mounts
 
 	local custom_mounts devices bindings links
-	custom_mounts=${1}
+	custom_mounts=${1}	# /tmp/custom_mounts.list
 	shift
-	devices=${@}
+	devices=${@}	#/dev/sda3
+	echo "(in get_custom_mounts) custom_mounts=$custom_mounts  devices=$devices"
 
 	bindings="/tmp/bindings.list"
 	links="/tmp/links.list"
@@ -1295,6 +1300,7 @@ get_custom_mounts ()
 		local device_name backing include_list
 		device_name="$(basename ${device})"
 		backing=$(mount_persistence_media ${device})
+		echo "backing=${backing}"
 		if [ -z "${backing}" ]
 		then
 			continue
@@ -1404,11 +1410,15 @@ get_custom_mounts ()
 activate_custom_mounts ()
 {
 	local custom_mounts used_devices
-	custom_mounts="${1}" # the ouput from get_custom_mounts()
+	custom_mounts="${1}" # the ouput from get_custom_mounts()	#/tmp/custom_mounts.list
 	used_devices=""
 
 	while read device source dest options # < ${custom_mounts}
 	do
+		# device = /dev/sda3
+		# source = /live/persistence/sda3
+		# dest = /root
+		# options = union
 		local opt_bind opt_link opt_union
 		opt_bind="true"
 		opt_link=""
@@ -1535,6 +1545,7 @@ activate_custom_mounts ()
 			link_files ${links_source} ${dest} ${rootmnt}
 		elif [ -n "${opt_union}" ] && [ -z "${PERSISTENCE_READONLY}" ]
 		then
+			# dounion /root /live/persistence/sda3 /live/rootfs/filesystem.squashfs/
 			do_union ${dest} ${source} ${rootfs_dest_backing}
 		elif [ -n "${opt_bind}" ] && [ -z "${PERSISTENCE_READONLY}" ]
 		then
@@ -1555,6 +1566,7 @@ activate_custom_mounts ()
 			mkdir -p ${cow_dir}
 			chown_ref "${source}" "${cow_dir}"
 			chmod_ref "${source}" "${cow_dir}"
+			log_warning_msg "E do_union ${dest} ${cow_dir} ${source} ${rootfs_dest_backing}"
 			do_union ${dest} ${cow_dir} ${source} ${rootfs_dest_backing}
 		fi
 
