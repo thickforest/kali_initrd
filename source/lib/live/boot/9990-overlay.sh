@@ -421,7 +421,9 @@ setup_unionfs ()
 		/bin/sh
 
 		# [function] get_custom_mounts can not create file ${custom_mounts}, Why??????????
-		echo "/dev/mapper/$mylv /live/persistence/$mylv /root union" > ${custom_mounts}
+		# because we don't have /persistence.conf in /dev/mapper/$mylv
+
+		# echo "/dev/mapper/$mylv /live/persistence/$mylv /root union" > ${custom_mounts}
 
 		[ -n "${DEBUG}" ] && cp ${custom_mounts} "/lib/live/mount/persistence"
 
